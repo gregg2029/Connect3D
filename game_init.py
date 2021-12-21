@@ -12,6 +12,10 @@ class Game:
             player_name_dict[x] = player
 
         return player_name_dict
+    
+    # End a turn
+    def end_turn(self):
+      self.turn += 1
 
     # Initialize a game
     def __init__(self):
