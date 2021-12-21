@@ -1,10 +1,14 @@
-from game_init.py import *
+from game_init import Game
+
 
 if __name__ == "__main__":
-    print("Hello and welcome to Connect3D")
-    print("Enter number of players")
-    num_players = int(input())
-    print(num_players)
+    print("Hello and welcome to Connect3D!")
+    # Create game
+    game = Game()
 
-    player_name_dict = player_init(num_players)
-    print(player_name_dict)
+    while not game.game_ended:
+        turn_num = game.turn
+        player_id = turn_num-1 % game.num_players
+        player = game.player_dict[player_id]
+        print("Turn ", game.turn, ", ", player.name, "'s move:")
+        move = str(input())
