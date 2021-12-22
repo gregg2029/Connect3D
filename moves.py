@@ -1,25 +1,53 @@
 class Move:
 
-  def arguments(self):
-    assert False, "Include in move"
-  
-class Place(Move):
-  alpha_mapping = {"A": 0, "B": 1, "C": 2, "D": 3, "E": 4}
+    def arguments(self):
+        assert False, "Include in move"
 
-  def __init__(self, letter, number):
-    if self.letter.upper() in alpha_mapping.keys() and (
-    number >= 1 and number <= 5):
-      self.x = alpha_mapping[self.letter]
-      self.y = number - 1 # Account for 0 index
-    else:
-      assert False, "Invalid file"
-  
-  def arguments(self):
-    return [self.x, self.y]
+    def execute(self, game):
+        assert False, "Include in move"
+
+
+class Place(Move):
+
+    def __init__(self, arg_arr):
+        alpha_mapping = {"A": 0, "B": 1, "C": 2, "D": 3, "E": 4}
+
+        # Parse letter and number
+        letter = ""
+        number = None
+        if len(arg_arr) == 1:
+            arg = arg_arr[0]
+            if len(arg) == 2:
+                letter = arg[0]
+                number = int(arg[1])
+            else:
+                assert False, "Incorrectly formatted"
+        elif len(arg_arr) == 2:
+            letter = arg_arr[0]
+            number = int(arg_arr[1])
+        else:
+            assert False, "Incorrectly formatted"
+
+        # Check for validity and create Place object
+        if letter.upper() in alpha_mapping.keys() and (
+                number >= 1 and number <= 5):
+            self.x = alpha_mapping[letter]
+            self.y = number - 1  # Account for 0 index
+        elif letter.upper() not in alpha_mapping.keys():
+            assert False, "Invalid file"
+        elif (number < 1 and number > 5):
+            assert False, "Invalid rank"
+
+    def arguments(self):
+        return [self.x, self.y]
+
+    def execute(self, game):
+        print("yee")
+
 
 class Peek(Move):
-  def __init__(self):
-    pass
+    def __init__(self):
+        pass
 
-  def arguments(self):
-    return []
+    def arguments(self):
+        return []
