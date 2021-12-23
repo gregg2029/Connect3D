@@ -34,6 +34,37 @@ class Game:
             assert False, "Invalid move"
 
         return move
+    
+    def valid_location(self, rank, file):
+        column = self.game_cube[rank][file]
+        col_ind = -1
+        for x in range(5):
+            if column[x] == -1:
+                col_ind = x
+                break
+        
+        return rank, file, col_ind
+
+    
+    def place_helper(self, place):
+        # Check if move is valid
+        rank, file = Place.arguments(place)
+        i, j, k = self.valid_location(rank, file)
+
+        print(i, j, k)
+        # Place player token in game cube
+
+        # Update game status
+    
+    # Execute a move
+    def execute_move(self, move):
+        # Move switch statement
+        if isinstance(move, Place):
+            self.place_helper(move)
+        elif isinstance(move, Peek):
+            print("it is a peek move")
+        else:
+            assert False, "Invalid move"
 
     # End a turn
     def end_turn(self):

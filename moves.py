@@ -3,9 +3,6 @@ class Move:
     def arguments(self):
         assert False, "Include in move"
 
-    def execute(self, game):
-        assert False, "Include in move"
-
 
 class Place(Move):
 
@@ -39,10 +36,7 @@ class Place(Move):
             assert False, "Invalid rank"
 
     def arguments(self):
-        return [self.x, self.y]
-
-    def execute(self, game):
-        print("yee")
+        return self.x, self.y
 
 
 class Peek(Move):

@@ -15,14 +15,12 @@ if __name__ == "__main__":
         # Prompt player for move and interpret
         print("Turn ", game.turn, ", ", player.name, "'s move:")
         move = game.interpret_move(str(input()))
-        
-        # Execute move
-        move.execute(game)
 
+        # Execute move
+        game.execute_move(move)
 
         # Update state as needed to end turn
         Game.end_turn(game)
-
 
 
 '''
